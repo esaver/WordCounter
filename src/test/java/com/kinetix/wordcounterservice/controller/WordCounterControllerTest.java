@@ -5,9 +5,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
-import static org.springframework.http.MediaType.APPLICATION_JSON;
-import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
-import static org.springframework.http.MediaType.sortByQualityValue;
+import static org.springframework.http.MediaType.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -56,9 +54,9 @@ public class WordCounterControllerTest {
     when(wordAdditionService.getWordCount(WordToAdd.builder().word("hello").build())).thenReturn(1);
 
     this.mockMvc.perform(get("/wordCount/{word}", "hello")
-        .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+        .contentType(APPLICATION_JSON_VALUE))
         .andExpect(status().is2xxSuccessful())
-        .andExpect(content().contentType(APPLICATION_JSON_UTF8_VALUE))
+        .andExpect(content().contentType(APPLICATION_JSON_VALUE))
         .andExpect(MockMvcResultMatchers.jsonPath("$", Is.is(1)));
   }
 }
