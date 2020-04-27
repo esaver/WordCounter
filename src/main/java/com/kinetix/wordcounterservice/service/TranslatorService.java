@@ -24,6 +24,7 @@ public class TranslatorService {
   }
 
   public String translate(String wordToTranslate) {
+    log.info("Get english name translation for '{}'", wordToTranslate);
     return translationMap.get(wordToTranslate);
   }
 

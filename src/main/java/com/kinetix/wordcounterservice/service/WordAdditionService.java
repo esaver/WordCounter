@@ -27,6 +27,7 @@ public class WordAdditionService {
       Optional.ofNullable(wordCounter.get(englishWord))
           .map(count -> wordCounter.put(englishWord, count + 1))
           .orElse(wordCounter.putIfAbsent(englishWord, 1));
+      log.info("'{}' with english name '{}' added.", wordToAdd, englishWord);
     }
   }
 
@@ -36,6 +37,7 @@ public class WordAdditionService {
     String englishWord = translatorService.translate(word.getWord().toLowerCase());
     if (nonNull(englishWord)) {
       count = wordCounter.get(englishWord);
+      log.info("Count for '{}' with english name '{}' returned.", word, englishWord);
     }
 
     return count;
