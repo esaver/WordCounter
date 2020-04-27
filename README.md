@@ -1,6 +1,6 @@
 # WordCounter
 
-WordCounter Application code and test
+WordCounter Application(see application description at [ApplicationDescription.md](./ApplicationDescription.md)) code and test
 
 Introduction
 
